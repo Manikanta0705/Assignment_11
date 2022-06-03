@@ -1,0 +1,87 @@
+\documentclass{beamer}
+\usetheme{CambridgeUS}
+
+
+
+\usepackage{enumitem}
+\usepackage{tfrupee}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{gensymb}
+\usepackage{graphicx}
+\usepackage{txfonts}
+
+\def\inputGnumericTable{}
+
+\usepackage[latin1]{inputenc}                                 
+\usepackage{color}                                            
+\usepackage{array}                                            
+\usepackage{longtable}                                        
+\usepackage{calc}                                             
+\usepackage{multirow}                                         
+\usepackage{hhline}                                           
+\usepackage{ifthen}
+\usepackage{caption} 
+\captionsetup[table]{skip=3pt}  
+\providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+\providecommand{\cbrak}[1]{\ensuremath{\left\{#1\right\}}}
+\renewcommand{\thefigure}{\arabic{table}}
+\renewcommand{\thetable}{\arabic{table}}                                     
+
+\title{AI1110 \\ Assignment 11}
+\author{MANIKANTA UPPULAPU \\ (BT05)}
+\date{\today}
+
+
+\begin{document}
+	\begin{frame}
+		\titlepage
+	\end{frame}
+	\begin{frame}{Outline}
+		\tableofcontents
+	\end{frame}
+	\section{Question}
+	\begin{frame}{Problem Statement}
+	\begin{block}
+{Question:}	 Given a discrete type random variable n taking the values 1,2,\dots and a sequence of random variables $X_k$ independent  of  n, we form the sum \\
+$$ S = \sum_{k=1}^{n} x_k$$\\
+This sum is a random variable specified as follows: For a specific $\zeta$,n($\zeta$) is an integer and s($\zeta$) equals the sum of the numbers X_k($\zeta$) for k from 1 to n($\zeta$). We maintain that if the random variables $X_k$ have the same mean, then
+$$E\{s\}=\eta E\{n\} , \text{where} E\{x_k\} = \eta$$
+
+\end{block}
+\end{frame}
+	\section{Solution}
+	\begin{frame}{Solution}
+Clearly,$E\{x_k|n=n\} = E\{X_k\}$ beacuse $x_k$ is independent of $n$.\\
+Hence\\
+\begin{align}
+E\{s|n=n\} = E\cbrak{\sum_{k=1}^{n}x_k|n=n} = \sum_{k=1}^{n}E\{x_k\}=\eta n\label{eq1}
+\end{align}
+from \eqref{eq1} and $E\{g(x,y)|x\}$ = \int_{-\infty}^{\infty} g(x,y)f(y|x)dy\\
+\begin{align}
+E\{s\} = E\{E\{s|n\}\} = E \{\eta n\}
+\end{align}
+\end{frame}
+
+\begin{frame}{Solution}
+if the random variables $x_k$ are uncorrelated with the same variance \sigma^2,then\\
+\begin{align}
+ E\{s^2\} = \eta^2 E\{n^2\} + \sigma^2 E\{n\}\\
+ \implies E\{s^2|n=n\} = \sum_{i=1}^{n}\sum_{k=1}^{n}E\{x_ix_k\}\\
+ \text{where} E\{x_ix_k\} =\begin{cases}
+  \sigma^2 + \eta^2 & i = k \\
+ \eta^2 & i \neq k
+ \end{cases}
+\end{align}
+\end{frame}
+\begin{frame}{Solution}
+    with i = k and $ n^2 - n$ terms with i \neq k \\
+     \begin{align}
+\implies (\sigma^2+\eta^2)n + \eta^2(n^2-n) = \eta^2 n^2 + \sigma^2 n 
+ \end{align}
+ this yields because\\
+ \begin{align}
+  E\{s^2\} = E\{E\{s^2|n\}\} = E\{\eta^2 n^2 + \sigma^2 n\}
+  \end{align}
+\end{frame}
+\end{document}
